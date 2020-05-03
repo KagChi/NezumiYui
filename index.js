@@ -102,7 +102,7 @@ client.on("ready", async () =>{
     client.user.setPresence({
       activity: {
         name: dom,
-        type: "WATCHING",
+        type: "STREAMING",
         url: "https://www.twitch.tv/a"
       },
       status: "idle"
