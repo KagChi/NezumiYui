@@ -105,7 +105,7 @@ client.on("ready", async () =>{
         type: "STREAMING",
         url: "https://www.twitch.tv/a"
       },
-      status: "idle"
+      status: "online"
     });
   }, 5000) // millsecond
 });
