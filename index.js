@@ -19,7 +19,7 @@ const { formatNumber, embedURL } = require('./util/Util');
 const { MessageEmbed } = require("discord.js");
 const { Structures } = require('discord.js');
 const { prefix, token } = require('./config.json');
-const { XIAO_TOKEN, OWNERS, XIAO_PREFIX, INVITE } = process.env;
+const { TOKEN, OWNERS, PREFIX, INVITE } = process.env;
 const Client = require('./structures/Client');
 Structures.extend('Guild', Guild => {
   class MusicGuild extends Guild {
@@ -44,7 +44,7 @@ Structures.extend('Guild', Guild => {
 });
 const client = new Client({
 	commandPrefix: prefix,
-	owner: '271576733168173057',
+	owner: '', //ah here we go
 	invite: INVITE,
 	disableMentions: 'everyone',
 	disabledEvents: ['TYPING_START']
@@ -61,23 +61,7 @@ client.registry
 		['info', 'Info'],
 		['random-res', 'Random Response'],
 		['fun', 'Fun'],
-		['random-seed', 'Seeded Randomizers'],
-		['single', 'Single Response'],
-		['auto', 'Automatic Response'],
-		['events', 'Events'],
-		['search', 'Search'],
-		['analyze', 'Analyzers'],
-		['games-sp', 'Single-Player Games'],
-		['games', 'Games'],
-		['edit-image', 'Image Manipulation'],
-		['edit-avatar', 'Avatar Manipulation'],
-		['edit-meme', 'Meme Generators'],
-		['edit-text', 'Text Manipulation'],
-		['edit-number', 'Number Manipulation'],
-		['other', 'Other'],
-		['roleplay', 'Roleplay'],
-    ['own', 'Owner'],
-		['readme', 'README Generators']
+    ['own', 'Owner']
 	])
 	.registerDefaultCommands({
 		help: false,
@@ -115,7 +99,7 @@ client.on("ready", async () =>{
 //	if (client.botListGuilds.includes(member.guild.id)) return null;
 //	const channel = member.guild.systemChannel;
 //	if (!channel || !channel.permissionsFor(client.user).has('SEND_MESSAGES')) return null;
-//	if (channel.topic && channel.topic.includes('<xiao:disable-leave>')) return null;
+//	if (channel.topic && channel.topic.includes('<nez:disable-leave>')) return null;
 //	try {
 //		const leaveMsg = leaveMsgs[Math.floor(Math.random() * leaveMsgs.length)];
 //		await channel.send(leaveMsg.replace(/{{user}}/gi, `**${member.user.tag}**`));
