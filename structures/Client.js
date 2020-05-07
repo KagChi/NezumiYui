@@ -19,6 +19,6 @@ module.exports = class NezClient extends CommandoClient {
 		});
 		this.webhook = new WebhookClient(XIAO_WEBHOOK_ID, XIAO_WEBHOOK_TOKEN, { disableEveryone: true });
 		this.dbl = TOP_GG_TOKEN ? new DBL(TOP_GG_TOKEN, this) : null;
-    this.games = new Collection();
+    	this.games = new Collection();
 	}
 };

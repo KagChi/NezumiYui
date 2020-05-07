@@ -107,7 +107,7 @@ client.on("ready", async () =>{
 //	} catch {
 //		return null;
 //	}
-//});
+//}); //Delete // if u need add notification if member leave the server.
 
 client.on('disconnect', event => {
 	client.logger.error(`[DISCONNECT] Disconnected with code ${event.code}.`);
@@ -141,7 +141,7 @@ client.on('commandRun', (command, promise, message, args, fromPattern, result) =
  // if (message.author.bot || !message.guild) return;
  // let nez = ["nez,"]
  // if(nez.includes(message.content)) //shit
- // return message.say("😲 Oh no did you make a typo? i use (.) not (,)");
+ // return message.say("😲 Oh no did you make a typo? i use (.) not (,)"); //im not activated this because top.gg mod ask me to delete this
 }); 
 
-client.login(token);
+client.login(token); //config.jason or env, what ever

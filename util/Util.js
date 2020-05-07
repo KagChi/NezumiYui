@@ -182,4 +182,4 @@ module.exports = class Util {
 		if (spoilers !== 0 && (spoilers && (spoilers % 2))) clean += '||';
 		return clean;
 	}
-};
+}; //credit from Dragonfire / Xiao

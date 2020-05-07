@@ -180,4 +180,4 @@ module.exports = class CanvasUtil {
 		const y = heightOffest + ((maxHeight / 2) - (height / 2));
 		return { x, y, width, height };
 	}
-};
+}; //credit from Xiao

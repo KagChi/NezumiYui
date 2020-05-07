@@ -38,4 +38,4 @@ module.exports = class ImageArgumentType extends ArgumentType {
 		if (msg.attachments.size) return false;
 		return this.client.registry.types.get('user').isEmpty(value, msg, arg);
 	}
-};
+}; //THIS FILE USELESS
