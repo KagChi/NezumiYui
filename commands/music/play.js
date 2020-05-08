@@ -41,7 +41,6 @@ module.exports = class PlayCommand extends Command {
     }
 
     if (
-      // if the user entered a youtube playlist url
       query.match(
         /^(?!.*\?.*\bv=)https:\/\/www\.youtube\.com\/.*\?.*\blist=.*$/
       )
@@ -57,17 +56,11 @@ module.exports = class PlayCommand extends Command {
       });
       for (let i = 0; i < videosObj.length; i++) {
         const video = await videosObj[i].fetch();
-        // this can be uncommented if you choose to limit the queue
-        // if (message.guild.musicData.queue.length < 10) {
-        //
+
         message.guild.musicData.queue.push(
           PlayCommand.constructSongObj(video, voiceChannel)
         );
-        // } else {
-        //   return message.say(
-        //     `I can't play the full playlist because there will be more than 10 songs in queue`
-        //   );
-        // }
+ 
       }
       if (message.guild.musicData.isPlaying == false) {
         message.guild.musicData.isPlaying = true;
@@ -79,7 +72,7 @@ module.exports = class PlayCommand extends Command {
       }
     }
 
-    // This if statement checks if the user entered a youtube url, it can be any kind of youtube url
+
     if (query.match(/^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+/)) {
       query = query
         .replace(/(>|<)/gi, '')
@@ -90,20 +83,7 @@ module.exports = class PlayCommand extends Command {
           'There was a problem getting the video you provided!'
         );
       });
-      // // can be uncommented if you don't want the bot to play live streams
-      // if (video.raw.snippet.liveBroadcastContent === 'live') {
-      //   return message.say("I don't support live streams!");
-      // }
-      // // can be uncommented if you don't want the bot to play videos longer than 1 hour
-      // if (video.duration.hours !== 0) {
-      //   return message.say('I cannot play videos longer than 1 hour');
-      // }
-      // // can be uncommented if you want to limit the queue
-      // if (message.guild.musicData.queue.length > 10) {
-      //   return message.say(
-      //     'There are too many songs in the queue already, skip or wait a bit'
-      //   );
-      // }
+
       message.guild.musicData.queue.push(
         PlayCommand.constructSongObj(video, voiceChannel)
       );
@@ -166,25 +146,7 @@ module.exports = class PlayCommand extends Command {
         youtube
           .getVideoByID(videos[videoIndex - 1].id)
           .then(function(video) {
-            // // can be uncommented if you don't want the bot to play live streams
-            // if (video.raw.snippet.liveBroadcastContent === 'live') {
-            //   songEmbed.delete();
-            //   return message.say("I don't support live streams!");
-            // }
 
-            // // can be uncommented if you don't want the bot to play videos longer than 1 hour
-            // if (video.duration.hours !== 0) {
-            //   songEmbed.delete();
-            //   return message.say('I cannot play videos longer than 1 hour');
-            // }
-
-            // // can be uncommented if you don't want to limit the queue
-            // if (message.guild.musicData.queue.length > 10) {
-            //   songEmbed.delete();
-            //   return message.say(
-            //     'There are too many songs in the queue already, skip or wait a bit'
-            //   );
-            // }
             message.guild.musicData.queue.push(
               PlayCommand.constructSongObj(video, voiceChannel)
             );
@@ -220,7 +182,7 @@ module.exports = class PlayCommand extends Command {
       });
   }
   static playSong(queue, message) {
-    const classThis = this; // use classThis instead of 'this' because of lexical scope below
+    const classThis = this; 
     queue[0].voiceChannel
       .join()
       .then(function(connection) {
@@ -239,7 +201,7 @@ module.exports = class PlayCommand extends Command {
               .setThumbnail(queue[0].thumbnail)
               .setColor('#c0b7ff')
               .addField('Playing:', queue[0].title)
-             // .setFooter(message.author.displayAvatarURL())
+    
               .setTimestamp()
               .addField('Duration:', queue[0].duration)
               .addField('Req by', message.author.username);
@@ -285,7 +247,7 @@ module.exports = class PlayCommand extends Command {
       voiceChannel
     };
   }
-  // prettier-ignore
+  // important
   static formatDuration(durationObj) {
     const duration = `${durationObj.hours ? (durationObj.hours + ':') : ''}${
       durationObj.minutes ? durationObj.minutes : '00'
