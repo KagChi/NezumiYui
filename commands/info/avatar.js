@@ -32,7 +32,7 @@ module.exports = class AvatarCommand extends Command {
 				formats.map(fmt => embedURL(fmt.toUpperCase(), user.displayAvatarURL({ format: fmt, size: 2048 }))).join(' | ')
 			)
             .setImage(user.displayAvatarURL({ format, size: 2048 }))
-            .setFooter(`Req by : ${msg.author.nickname}`)
+            .setFooter(`Req by : ${msg.author.username}`)
 			.setColor('RANDOM');
 		return msg.embed(embed);
 	}
