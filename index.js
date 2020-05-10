@@ -130,7 +130,7 @@ client.on('commandRun', (command, promise, message, args, fromPattern, result) =
   .setColor('#eaadbd')
   .setDescription(`Hello **${message.author.tag}**, My prefix **\`${prefix}\`** || Or ${prefix}help  🎉🥳`)
   if (message.content === `<@!${client.user.id}>` || message.content === `<@${client.user.id}>`)
- return message.channel.send(embed);
+ return message.channel.send(embed); 
    
  // if (message.author.bot || !message.guild) return;
  // let djimjam = ["nez."]
