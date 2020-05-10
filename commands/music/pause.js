@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-
+const { MessageEmbed } = require('discord.js')
 module.exports = class PauseCommand extends Command {
   constructor(client) {
     super(client, {
@@ -42,9 +42,11 @@ module.exports = class PauseCommand extends Command {
   // Compare the voiceChannels
   if (userVoiceChannel === clientVoiceConnection.channel) {
     // The client and user are in the same voiceChannel, the client can disconnect
-
-    message.say('Song paused :pause_button:');
     message.guild.musicData.songDispatcher.pause();
+    const embed = new MessageEmbed()
+    .setTitle('⏸ Song Paussed')
+    .addField('Successfully Pause', `**${message.guild.musicData.nowPlaying.title}**`)
+    message.say(embed);
   } else {
     // The client and user are NOT in the same voiceChannel
     message.channel.send('You can only execute this command if you share the same voiceChannel!');
