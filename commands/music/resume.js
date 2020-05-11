@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-
+const { MessageEmbed } = require('discord.js');
 module.exports = class ResumeCommand extends Command {
   constructor(client) {
     super(client, {
@@ -11,7 +11,6 @@ module.exports = class ResumeCommand extends Command {
       guildOnly: true
     });
   }
-
   run(message) {
     var voiceChannel = message.member.voice.channel;
     if (!voiceChannel) return message.reply('Join a channel and try again');
@@ -42,9 +41,11 @@ module.exports = class ResumeCommand extends Command {
   // Compare the voiceChannels
   if (userVoiceChannel === clientVoiceConnection.channel) {
     // The client and user are in the same voiceChannel, the client can disconnect
-
-    message.say('Song resumed :play_pause:');
     message.guild.musicData.songDispatcher.resume();
+    const embed = new MessageEmbed()
+    .setTitle('⏯ Song Resumed')
+    .addField('Resumed', `**${message.guild.musicData.nowPlaying.title}**`)
+    message.say(embed);
   } else {
     // The client and user are NOT in the same voiceChannel
     message.channel.send('You can only execute this command if you share the same voiceChannel!');
