@@ -160,7 +160,10 @@ module.exports = class PlayCommand extends Command {
               if (songEmbed) {
                 songEmbed.delete();
               }
-              return message.say(`${video.title} added to queue`);
+              let embod = new MessageEmbed()
+              .setAuthor('Added Song Queue','https://cdn.discordapp.com/emojis/661059635687718932.gif?v=1')
+              .addField(`${video.title}`, '💿 Added to queue')
+              return message.say(embod);
             }
           })
           .catch(function() {
