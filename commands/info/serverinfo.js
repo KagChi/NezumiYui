@@ -35,7 +35,7 @@ module.exports = class ServerInfoCommand extends Command {
 			group: 'info',
 			memberName: 'server',
 			description: 'Get info on the server.',
-      hidden: false,
+      			hidden: false,
 			details: `Get detailed information on the server.`,
 			guildOnly: true,
 			throttling: {
@@ -46,7 +46,7 @@ module.exports = class ServerInfoCommand extends Command {
 	}
 
 	run(msg) {
-		msg.guild.members.fetch().then(fetchedMembers => {
+	msg.guild.members.fetch().then(fetchedMembers => {
 	const totaldnd = fetchedMembers.filter(member => member.presence.status === 'dnd');
       	msg.guild.members.fetch().then(fetchedMembers => {
 	const totalonline = fetchedMembers.filter(member => member.presence.status === 'online');
@@ -62,8 +62,8 @@ module.exports = class ServerInfoCommand extends Command {
             .filter(r => r.id !== msg.guild.id)
             .map(r => r).join(", ") || 'none';
 		return msg.embed({
-      		title: 'Nezumi Server Info' ,
-      		footer: `${msg.author.username}`,
+      			title: 'Nezumi Server Info' ,
+      			footer: `${msg.author.username}`,
 			color: 3447003,
 			description: `**${msg.guild.name}** (ID: ${msg.guild.id})\n**Owner: ${msg.guild.owner.user.tag} <:owner:711606469971148831>**\n(ID: ${msg.guild.ownerID})`,
 			fields: [
