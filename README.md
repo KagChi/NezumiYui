@@ -5,7 +5,8 @@
 
 
 * Hello there, We are glad u here, to be honest, this is not open source code, but if u see this, two thumbs up for you.
-
+## PP
+* GW GA TAU KENAPA SC GW SELALU BERANTAKAN KLO GW COMIT KE GIT
 ## Getting Started
 * main file in `index.js` thanks xD
 
